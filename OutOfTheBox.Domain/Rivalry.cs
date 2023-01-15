@@ -2,10 +2,10 @@
 {
     public class Rivalry
     {
-        public int Prisoner1Id { get; set; }
-        public Prisoner? Prisoner1 { get; set; }
-        public int Prisoner2Id { get; set; }
-        public Prisoner? Prisoner2 { get; set; }
+        public int PrisonerId { get; set; }
+        public Prisoner? Prisoner { get; set; }
+        public int RivalId { get; set; }
+        public Prisoner? Rival { get; set; }
 
     }
 }

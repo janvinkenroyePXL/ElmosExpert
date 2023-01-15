@@ -8,6 +8,7 @@
         public int CellId { get; set; }
         public Cell? Cell { get; set; }
         public Sentence? Sentence { get; set; }
-        public ICollection<Rivalry> Rivalries { get; set; } = new List<Rivalry>();
+        public ICollection<Rivalry> ActiveRivalries { get; set; } = new List<Rivalry>();
+        public ICollection<Rivalry> PassiveRivalries { get; set; } = new List<Rivalry>();
     }
 }
