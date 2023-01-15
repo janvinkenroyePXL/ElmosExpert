@@ -22,20 +22,20 @@ namespace OutOfTheBox.Infrastructure.Repositories
             return await _context.Set<T>().FindAsync(key);
         }
 
-        public virtual T Insert(T entity)
+        public virtual async Task<T> InsertAsync(T entity)
         {
             _context.Set<T>().Add(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return entity;
         }
 
-        public virtual void Delete(T entity)
+        public virtual async Task<int> DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
-            _context.SaveChanges();
+            return await _context.SaveChangesAsync();
         }
 
-        public virtual T? Update(T entity, object key)
+        public virtual async Task<T?> UpdateAsync(T entity, object key)
         {
             if (entity == null)
                 return null;
@@ -43,14 +43,9 @@ namespace OutOfTheBox.Infrastructure.Repositories
             if (exist != null)
             {
                 _context.Entry(exist).CurrentValues.SetValues(entity);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             return exist;
-        }
-
-        public virtual void Save()
-        {
-            _context.SaveChanges();
         }
     }
 }
