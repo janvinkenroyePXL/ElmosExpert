@@ -86,3 +86,7 @@ D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Logic.d
 D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Domain.pdb
 D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Infrastructure.pdb
 D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Logic.pdb
+D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\AutoMapper.dll
+D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Dto.dll
+D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Dto.pdb

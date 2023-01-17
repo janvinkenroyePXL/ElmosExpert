@@ -59,6 +59,9 @@ namespace OutOfTheBox.Infrastructure.Migrations
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("prisons", (string)null);
@@ -91,13 +94,21 @@ namespace OutOfTheBox.Infrastructure.Migrations
 
             modelBuilder.Entity("OutOfTheBox.Domain.Rivalry", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("PrisonerId")
                         .HasColumnType("int");
 
                     b.Property<int>("RivalId")
                         .HasColumnType("int");
 
-                    b.HasKey("PrisonerId", "RivalId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("PrisonerId");
 
                     b.HasIndex("RivalId");
 

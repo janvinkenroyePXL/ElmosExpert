@@ -12,7 +12,7 @@ namespace OutOfTheBox.Infrastructure.EntityConfigurations
                 .ToTable("rivalries");
 
             builder
-                .HasKey(r => new { r.PrisonerId, r.RivalId});
+                .HasKey(r => r.Id);
 
             builder
                 .HasOne<Prisoner>(r => r.Prisoner)
