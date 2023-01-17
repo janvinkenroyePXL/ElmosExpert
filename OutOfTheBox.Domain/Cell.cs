@@ -1,6 +1,6 @@
 ﻿namespace OutOfTheBox.Domain
 {
-    public class Cell
+    public class Cell : IEntity
     {
         public int Id { get; set; }
         public int Capacity { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace OutOfTheBox.Domain
 {
-    public class Sentence
+    public class Sentence : IEntity
     {
         public int Id { get; set; }
         public bool IsLifeSentence { get; set; }

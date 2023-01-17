@@ -1,6 +1,6 @@
 ﻿namespace OutOfTheBox.Domain
 {
-    public class Prisoner
+    public class Prisoner : IEntity
     {
         public int Id { get; set; }
         public string? FirstName { get; set; } // or public string FirstName { get; set; } = string.Empty;

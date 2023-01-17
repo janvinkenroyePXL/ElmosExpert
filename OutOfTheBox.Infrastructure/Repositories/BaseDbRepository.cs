@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OutOfTheBox.Domain;
 using OutOfTheBox.Logic.IRepositories;
 
 namespace OutOfTheBox.Infrastructure.Repositories
 {
-    public abstract class BaseDbRepository<T> : IRepository<T> where T : class, new()
+    public abstract class BaseDbRepository<T> : IRepository<T> where T : class, IEntity, new()
     {
         protected OutOfTheBoxContext _context;
 
@@ -22,35 +23,37 @@ namespace OutOfTheBox.Infrastructure.Repositories
             return await _context.Set<T>().FindAsync(key);
         }
 
-        public virtual T Insert(T entity)
+        public virtual async Task<T?> InsertAsync(T entity)
         {
             _context.Set<T>().Add(entity);
-            _context.SaveChanges();
-            return entity;
+            await _context.SaveChangesAsync();
+            var idProperty = entity.GetType().GetProperty("Id")?.GetValue(entity, null);
+            return await _context.Set<T>().FindAsync(idProperty);
         }
 
-        public virtual void Delete(T entity)
+        public virtual async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public virtual T? Update(T entity, object key)
+        public virtual async Task<T?> UpdateAsync(T entity, object key)
         {
             if (entity == null)
                 return null;
-            T? exist = _context.Set<T>().Find(key);
+            T? exist = await _context.Set<T>().FindAsync(key);
             if (exist != null)
             {
+                entity.Id = exist.Id;
                 _context.Entry(exist).CurrentValues.SetValues(entity);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             return exist;
         }
 
-        public virtual void Save()
+        public virtual bool Exists(object key)
         {
-            _context.SaveChanges();
+            return _context.Set<T>().Find(key) != null;
         }
     }
 }
