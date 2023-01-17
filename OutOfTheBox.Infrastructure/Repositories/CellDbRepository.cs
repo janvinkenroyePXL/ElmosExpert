@@ -25,5 +25,13 @@ namespace OutOfTheBox.Infrastructure.Repositories
                 .Include(c => c.Prisoners)
                 .FirstOrDefaultAsync(c => c.Id == (int) key);
         }
+
+        public async Task<IEnumerable<Cell>> GetFreeNonIsolationCellsAsync()
+        {
+            return await _context.Set<Cell>()
+                .Where(c => c.IsIsolationCell == false
+                    && c.Prisoners.Count < c.Capacity)
+                .ToListAsync();
+        }
     }
 }

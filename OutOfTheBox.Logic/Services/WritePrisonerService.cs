@@ -8,8 +8,26 @@ namespace OutOfTheBox.Logic.Services
 {
     public class WritePrisonerService : BaseWriteService<Prisoner, PrisonerDto, PrisonerCreateRequest, PrisonerUpdateRequest>, IWritePrisonerService
     {
-        public WritePrisonerService(IPrisonerRepository repository, IMapper mapper) : base(repository, mapper)
+        private readonly IRepository<Prisoner> _repository;
+        private readonly IMapper _mapper;
+        private readonly ICellAssignmentService _cellAssignmentService;
+
+        public WritePrisonerService(IRepository<Prisoner> repository, 
+            IMapper mapper, 
+            ICellAssignmentService cellAssignmentService) 
+            : base(repository, mapper)
         {
+            _repository = repository;
+            _mapper = mapper;
+            _cellAssignmentService = cellAssignmentService;
+        }
+
+        public override async Task<PrisonerDto?> CreateAsync(PrisonerCreateRequest createRequest)
+        {
+            var prisoner = _mapper.Map<Prisoner>(createRequest);
+            prisoner.Cell = await _cellAssignmentService.AssignCellToPrisoner(prisoner);
+            var returnedEntity = await _repository.InsertAsync(prisoner);
+            return _mapper.Map<PrisonerDto>(returnedEntity);
         }
     }
 }

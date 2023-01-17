@@ -36,13 +36,16 @@ namespace OutOfTheBox.Api
             services.AddScoped<ISentenceRepository, SentenceDbRepository>();
             services.AddScoped<IRivalryRepository, RivalryDbRepository>();
 
-            // Services
+            // Crud-Services
             services.AddScoped<IWritePrisonService, WritePrisonService>();
             services.AddScoped<IReadPrisonService, ReadPrisonService>();
             services.AddScoped<IWriteCellService, WriteCellService>();
             services.AddScoped<IReadCellService, ReadCellService>();
             services.AddScoped<IWritePrisonerService, WritePrisonerService>();
             services.AddScoped<IReadPrisonerService, ReadPrisonerService>();
+
+            // Services
+            services.AddScoped<ICellAssignmentService, CellAssignmentService>();
 
             // AutoMapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
