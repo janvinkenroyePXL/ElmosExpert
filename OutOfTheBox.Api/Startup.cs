@@ -46,6 +46,9 @@ namespace OutOfTheBox.Api
 
             // Services
             services.AddScoped<ICellAssignmentService, CellAssignmentService>();
+            services.AddScoped<IReleaseService, ReleaseService>();
+            services.AddScoped<IVisitationService, VisitationService>();
+            services.AddScoped<IIsolationService, IsolationService>();
 
             // AutoMapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

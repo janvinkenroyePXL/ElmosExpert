@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OutOfTheBox.Infrastructure;
 
@@ -11,9 +12,11 @@ using OutOfTheBox.Infrastructure;
 namespace OutOfTheBox.Infrastructure.Migrations
 {
     [DbContext(typeof(OutOfTheBoxContext))]
-    partial class OutOfTheBoxContextModelSnapshot : ModelSnapshot
+    [Migration("20230117215433_Prisoner-Status")]
+    partial class PrisonerStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

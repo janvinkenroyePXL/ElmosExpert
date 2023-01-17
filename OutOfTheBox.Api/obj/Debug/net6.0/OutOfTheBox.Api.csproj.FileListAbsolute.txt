@@ -90,3 +90,5 @@ D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\AutoMapper.dll
 D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Dto.dll
 D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Dto.pdb
+D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Enum.dll
+D:\dev\Projects\ElmosExpert\OutOfTheBox.Api\bin\Debug\net6.0\OutOfTheBox.Enum.pdb
