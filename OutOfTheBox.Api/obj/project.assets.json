@@ -1275,6 +1275,9 @@
       "OutOfTheBox.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "OutOfTheBox.Enum": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/OutOfTheBox.Domain.dll": {}
         },
@@ -1285,11 +1288,24 @@
       "OutOfTheBox.Dto/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "OutOfTheBox.Enum": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/OutOfTheBox.Dto.dll": {}
         },
         "runtime": {
           "bin/placeholder/OutOfTheBox.Dto.dll": {}
+        }
+      },
+      "OutOfTheBox.Enum/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/OutOfTheBox.Enum.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OutOfTheBox.Enum.dll": {}
         }
       },
       "OutOfTheBox.Infrastructure/1.0.0": {
@@ -3831,6 +3847,11 @@
       "type": "project",
       "path": "../OutOfTheBox.Dto/OutOfTheBox.Dto.csproj",
       "msbuildProject": "../OutOfTheBox.Dto/OutOfTheBox.Dto.csproj"
+    },
+    "OutOfTheBox.Enum/1.0.0": {
+      "type": "project",
+      "path": "../OutOfTheBox.Enum/OutOfTheBox.Enum.csproj",
+      "msbuildProject": "../OutOfTheBox.Enum/OutOfTheBox.Enum.csproj"
     },
     "OutOfTheBox.Infrastructure/1.0.0": {
       "type": "project",

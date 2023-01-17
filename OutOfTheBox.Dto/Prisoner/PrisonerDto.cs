@@ -1,4 +1,6 @@
-﻿namespace OutOfTheBox.Dto
+﻿using OutOfTheBox.Enum;
+
+namespace OutOfTheBox.Dto
 {
     public class PrisonerDto : IDto
     {
@@ -6,6 +8,7 @@
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public int CellId { get; set; }
+        public PrisonerStatus Status { get; set; }
         public CellDto? Cell { get; set; }
         public SentenceDto? Sentence { get; set; }
         public ICollection<RivalryDto> ActiveRivalries { get; set; } = new List<RivalryDto>();

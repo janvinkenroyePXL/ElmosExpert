@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\OutOfTheBox.Enum\OutOfTheBox.Enum.csproj" />
-  </ItemGroup>
-
 </Project>

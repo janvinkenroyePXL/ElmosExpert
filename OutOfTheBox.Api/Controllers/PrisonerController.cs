@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OutOfTheBox.Domain;
 using OutOfTheBox.Dto;
-using OutOfTheBox.Logic.IRepositories;
 using OutOfTheBox.Logic.IServices;
-using OutOfTheBox.Logic.Services;
 
 namespace OutOfTheBox.Api.Controllers
 {
@@ -13,11 +10,18 @@ namespace OutOfTheBox.Api.Controllers
     {
         private readonly IReadPrisonerService _readPrisonerService;
         private readonly IWritePrisonerService _writePrisonerService;
+        private readonly IIsolationService _isolationService;
+        private readonly IVisitationService _visitationService;
+        private readonly IReleaseService _releaseService;
 
-        public PrisonerController(IReadPrisonerService readPrisonerService, IWritePrisonerService writePrisonerService)
+        public PrisonerController(IReadPrisonerService readPrisonerService, IWritePrisonerService writePrisonerService,
+            IIsolationService isolationService, IVisitationService visitationService, IReleaseService releaseService)
         {
             _readPrisonerService = readPrisonerService;
             _writePrisonerService = writePrisonerService;
+            _isolationService = isolationService;
+            _visitationService = visitationService;
+            _releaseService = releaseService;
         }
 
         // GET api/prisoners
@@ -77,6 +81,71 @@ namespace OutOfTheBox.Api.Controllers
         public async Task<IActionResult> DeletePrisoner(int id)
         {
             if (!await _writePrisonerService.DeleteAsync(id))
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+        // POST api/prisoners/<id>/visitation-start
+        [HttpPost]
+        public async Task<IActionResult> StartVisitation(int id)
+        {
+            var returnedDto = await _visitationService.StartVisitation(id);
+            if (returnedDto == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+        // POST api/prisoners/<id>/visitation-stop
+        [HttpPost]
+        public async Task<IActionResult> StopVisitation(int id)
+        {
+            var returnedDto = await _visitationService.StopVisitation(id);
+            if (returnedDto == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+        // POST api/prisoners/<id>/isolation-start
+        [HttpPost]
+        public async Task<IActionResult> StartIsolation(int id)
+        {
+            var returnedDto = await _isolationService.StartIsolation(id);
+            if (returnedDto == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+        // POST api/prisoners/<id>/isolation-stop
+        [HttpPost]
+        public async Task<IActionResult> StopIsolation(int id)
+        {
+            var returnedDto = await _isolationService.StopIsolation(id);
+            if (returnedDto == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+        // POST api/prisoners/<id>/release-early
+        [HttpPost]
+        public async Task<IActionResult> ReleaseEarly(int id)
+        {
+            var returnedDto = await _releaseService.ReleaseEarly(id);
+            if (returnedDto == null)
             {
                 return NotFound();
             }
