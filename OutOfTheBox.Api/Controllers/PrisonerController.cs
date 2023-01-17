@@ -89,7 +89,7 @@ namespace OutOfTheBox.Api.Controllers
         }
 
         // POST api/prisoners/<id>/visitation-start
-        [HttpPost]
+        [HttpPost("{id}/visitation-star")]
         public async Task<IActionResult> StartVisitation(int id)
         {
             var returnedDto = await _visitationService.StartVisitation(id);
@@ -102,7 +102,7 @@ namespace OutOfTheBox.Api.Controllers
         }
 
         // POST api/prisoners/<id>/visitation-stop
-        [HttpPost]
+        [HttpPost("{id}/visitation-stop")]
         public async Task<IActionResult> StopVisitation(int id)
         {
             var returnedDto = await _visitationService.StopVisitation(id);
@@ -115,7 +115,7 @@ namespace OutOfTheBox.Api.Controllers
         }
 
         // POST api/prisoners/<id>/isolation-start
-        [HttpPost]
+        [HttpPost("{id}/isolation-start")]
         public async Task<IActionResult> StartIsolation(int id)
         {
             var returnedDto = await _isolationService.StartIsolation(id);
@@ -128,7 +128,7 @@ namespace OutOfTheBox.Api.Controllers
         }
 
         // POST api/prisoners/<id>/isolation-stop
-        [HttpPost]
+        [HttpPost("{id}/isolation-stop")]
         public async Task<IActionResult> StopIsolation(int id)
         {
             var returnedDto = await _isolationService.StopIsolation(id);
@@ -141,7 +141,7 @@ namespace OutOfTheBox.Api.Controllers
         }
 
         // POST api/prisoners/<id>/release-early
-        [HttpPost]
+        [HttpPost("{id}/release-early")]
         public async Task<IActionResult> ReleaseEarly(int id)
         {
             var returnedDto = await _releaseService.ReleaseEarly(id);
